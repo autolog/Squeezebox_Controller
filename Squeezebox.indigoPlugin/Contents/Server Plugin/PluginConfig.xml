@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<PluginConfig>
+    <SupportURL>http://forums.indigodomo.com/viewforum.php?f=140</SupportURL>
+    <Field id="description" type="label">
+        <Label>This Plugin controls Squeezeboxes. 😄</Label>
+    </Field>
+    <Field id="copyright" type="label">
+        <Label>Copyright © 2014-2016 Autolog</Label>
+    </Field>
+    <Field id="separator-1" type="separator" visibleBindingValue="true"/> 
+
+    <Field id="coverArtFolder" type="textfield" defaultValue="/Library/Application Support">
+        <Label>Cover Art folder:</Label>
+    </Field>
+    <Field id="coverArtFolderHelp" type="label" readonly="true" fontSize="small" fontColor="blue">
+        <Label>Specify full path to a folder that will be used by the plugin to store cover art images (defaults to '/Library/Application Support' which will result in a folder '/Library/Application Support/autolog/squeezebox/12345678' being created where 12345678 is the Squeezebox player device ID (one folder for each player).</Label>
+    </Field>
+    <Field id="separator-2" type="separator" visibleBindingValue="true"/> 
+
+    <Field id="announcementTempFolder" type="textfield" defaultValue="/Library/Application Support">
+        <Label>Announcement Temporary Work folder:</Label>
+    </Field>
+    <Field id="announcementTempFolderHelp" type="label" readonly="true" fontSize="small" fontColor="blue">
+        <Label>Specify full path to a folder that can be used by the plugin to create an 'autolog' folder for temporary announcement work files (defaults to '/Library/Application Support' which will result in a folder '/Library/Application Support/autolog/squeezebox/12345678' being created where 12345678 is the Squeezebox player device ID (one folder for each player).</Label>
+    </Field>
+    <Field id="separator-3" type="separator" /> 
+
+    <Field type="checkbox" id="debugShow" default="false">
+        <Label>Show logging Options:</Label>
+        <Description>Show debugging and logging options.</Description>
+    </Field>
+    <Field id="separator-4" type="separator" visibleBindingId="debugShow" visibleBindingValue="true"/> 
+    <Field id="logging" type="label" fontSize="small" fontColor="blue" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Logging is done to a file independant of the Indigo Event log. The log files are rotated and a maximum of 5 days logs are retained.</Label>
+    </Field>
+    <Field id="debugFolder" type="textfield" defaultValue="/Library/Application Support" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Debug logging folder:</Label>
+    </Field>
+    <Field id="debugFolderHelp" type="label" readonly="true" fontSize="small" fontColor="blue" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Specify full path to a folder that can be used by the plugin to create an 'autolog/squeezebox/debug' folder hierarchy for a debugging log file set (defaults to '/Library/Application Support') which will result in a folder '/Library/Application Support/autolog/squeezebox/debug' being created.</Label>
+    </Field>
+    <Field type="checkbox" id="debugDetailed" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Detailed Debug:</Label>
+        <Description>Enable detail logging for internal logic.</Description>
+    </Field>
+    <Field type="checkbox" id="debugListen" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Monitor Listen:</Label>
+        <Description>Enable logging of notifications from the Squeezebox server.</Description>
+    </Field>
+    <Field type="checkbox" id="debugMethodTrace" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Method Trace:</Label>
+        <Description>Enable Method trace logging.</Description>
+    </Field>
+    <Field type="checkbox" id="debugPlayAnnouncement" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Debug Announcement Playing:</Label>
+        <Description>Enable logging for announcement playing logic.</Description>
+    </Field>
+    <Field type="checkbox" id="debugSend" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Monitor Interface Send:</Label>
+        <Description>Enable logging of commands sent to the Squeezebox server interface.</Description>
+    </Field>
+    <Field type="checkbox" id="debugReceive" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Monitor Interface Receive:</Label>
+        <Description>Enable logging of commands received from the Squeezebox server interface.</Description>
+    </Field>
+    <Field type="checkbox" id="debugResponse" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Monitor Server response:</Label>
+        <Description>Enable logging of queued responses received from the Squeezebox server.</Description>
+    </Field>
+    <Field type="checkbox" id="debugThreading" default="false" visibleBindingId="debugShow" visibleBindingValue="true">
+        <Label>Debug Threading:</Label>
+        <Description>Enable logging of Squeezebox communication threads.</Description>
+    </Field>
+
+</PluginConfig>

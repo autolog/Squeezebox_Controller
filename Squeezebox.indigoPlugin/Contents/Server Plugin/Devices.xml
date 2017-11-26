@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+
+<Devices>
+	<Device type="custom" id="squeezeboxServer">
+		<Name>Squeezebox Server</Name>
+		<ConfigUI>
+		    <Field id="ipAddress" type="textfield" defaultValue="">
+		        <Label>IP Address:</Label>
+		    </Field>
+		    <Field id="port" type="textfield" readonly="YES" defaultValue="9090">
+		        <Label>Port:</Label>
+		    </Field>
+		</ConfigUI>
+
+		<States>
+
+           <State id="status">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Status Changed</TriggerLabel>
+                <ControlPageLabel>Status</ControlPageLabel>
+            </State>
+
+           <State id="version">
+            	<ValueType>String</ValueType>
+            	<TriggerLabel>Version</TriggerLabel>
+            	<ControlPageLabel>Version</ControlPageLabel>
+            </State>
+
+           <State id="totalAlbums">
+            	<ValueType>String</ValueType>
+            	<TriggerLabel>Total Albums</TriggerLabel>
+            	<ControlPageLabel>Total Albums</ControlPageLabel>
+            </State>
+
+           <State id="totalArtists">
+            	<ValueType>String</ValueType>
+            	<TriggerLabel>Total Artists</TriggerLabel>
+            	<ControlPageLabel>Total Artists</ControlPageLabel>
+            </State>
+
+           <State id="totalGenres">
+            	<ValueType>String</ValueType>
+            	<TriggerLabel>Total Genres</TriggerLabel>
+            	<ControlPageLabel>Total Genres</ControlPageLabel>
+            </State>
+
+           <State id="totalSongs">
+            	<ValueType>String</ValueType>
+            	<TriggerLabel>Total Songs</TriggerLabel>
+            	<ControlPageLabel>Total Songs</ControlPageLabel>
+            </State>
+
+           <State id="lastScan">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Last Scan</TriggerLabel>
+                <ControlPageLabel>Last Scan</ControlPageLabel>
+            </State>
+
+		</States>
+		<UiDisplayStateId>status</UiDisplayStateId>
+	</Device>
+
+    <Device type="custom" id="squeezeboxPlayer">
+		<Name>Squeezebox Player</Name>
+		<ConfigUI>
+		    <Field id="mac" type="textfield" defaultValue="">
+		        <Label>MAC:</Label>
+		    </Field>
+
+		</ConfigUI>
+
+		<States>
+           <State id="serverName">
+            	<ValueType>String</ValueType>
+            	<TriggerLabel>Server Name Changed</TriggerLabel>
+            	<ControlPageLabel>Server Name</ControlPageLabel>
+            </State>
+
+           <State id="power">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Power Changed</TriggerLabel>
+                <ControlPageLabel>Power</ControlPageLabel>
+            </State>
+
+           <State id="powerUi">
+                <ValueType>String</ValueType>
+                <TriggerLabel>Power UI Changed</TriggerLabel>
+                <ControlPageLabel>Power UI</ControlPageLabel>
+            </State>
+
+           <State id="serverId">
+                <ValueType>Integer</ValueType>
+                <TriggerLabel>Server ID Changed</TriggerLabel>
+                <ControlPageLabel>Server ID</ControlPageLabel>
+            </State>
+
+            <State id="name">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Name</ControlPageLabel>
+                <TriggerLabel>Name</TriggerLabel>
+            </State>
+
+            <State id="connected">
+                <ValueType>Boolean</ValueType>
+                <ControlPageLabel>Name</ControlPageLabel>
+                <TriggerLabel>Name</TriggerLabel>
+            </State>
+
+            <State id="model">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Model</ControlPageLabel>
+            	<TriggerLabel>Model</TriggerLabel>
+            </State>
+
+            <State id="ipAddress">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>IP Address</ControlPageLabel>
+            	<TriggerLabel>IP Address</TriggerLabel>
+            </State>
+
+            <State id="portAddress">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Port</ControlPageLabel>
+                <TriggerLabel>Port</TriggerLabel>
+            </State>
+
+            <State id="coverArtUrl">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Cover Art URL</ControlPageLabel>
+                <TriggerLabel>Cover Art URL</TriggerLabel>
+            </State>
+
+            <State id="songUrl">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Song URL</ControlPageLabel>
+                <TriggerLabel>Song URL</TriggerLabel>
+            </State>
+
+            <State id="artist">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Artist</ControlPageLabel>
+                <TriggerLabel>Artist</TriggerLabel>
+            </State>
+
+            <State id="album">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Album</ControlPageLabel>
+                <TriggerLabel>Album</TriggerLabel>
+            </State>
+
+            <State id="title">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Title</ControlPageLabel>
+                <TriggerLabel>Title</TriggerLabel>
+            </State>
+
+            <State id="genre">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Genre</ControlPageLabel>
+                <TriggerLabel>Genre</TriggerLabel>
+            </State>
+
+            <State id="duration">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Duration</ControlPageLabel>
+                <TriggerLabel>Duration</TriggerLabel>
+            </State>
+
+            <State id="durationUi">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Duration UI</ControlPageLabel>
+                <TriggerLabel>Duration UI</TriggerLabel>
+            </State>
+
+            <State id="playlistName">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Playlist Name</ControlPageLabel>
+                <TriggerLabel>Playlist Name</TriggerLabel>
+            </State>
+
+            <State id="playlistIndex">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Playlist Index</ControlPageLabel>
+                <TriggerLabel>Playlist Index</TriggerLabel>
+            </State>
+
+            <State id="playlistTrackNumber">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Playlist Track Number</ControlPageLabel>
+                <TriggerLabel>Playlist Track Number</TriggerLabel>
+            </State>
+
+            <State id="playlistTracksTotal">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Playlist Tracks Total</ControlPageLabel>
+                <TriggerLabel>Playlist Tracks Total</TriggerLabel>
+            </State>
+
+            <State id="playlistTracksUi">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Playlist Tracks UI</ControlPageLabel>
+                <TriggerLabel>Playlist Tracks UI</TriggerLabel>
+            </State>
+
+            <State id="remoteStream">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Remote Stream</ControlPageLabel>
+                <TriggerLabel>Remote Stream</TriggerLabel>
+            </State>
+
+            <State id="mode">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Mode</ControlPageLabel>
+                <TriggerLabel>Mode</TriggerLabel>
+            </State>
+            <State id="maintainSync">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Maintain Sync</ControlPageLabel>
+                <TriggerLabel>Maintain Sync</TriggerLabel>
+            </State>
+            <State id="volume">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Volume</ControlPageLabel>
+                <TriggerLabel>Volume</TriggerLabel>
+            </State>
+            <State id="repeat">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Repeat</ControlPageLabel>
+                <TriggerLabel>Repeat</TriggerLabel>
+            </State>
+            <State id="shuffle">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Shuffle</ControlPageLabel>
+                <TriggerLabel>Shuffle</TriggerLabel>
+            </State>
+            <State id="state">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>State</ControlPageLabel>
+                <TriggerLabel>State</TriggerLabel>
+            </State>
+
+            <State id="isSyncMaster">
+                <ValueType>Boolean</ValueType>
+                <ControlPageLabel>Is Sync Master</ControlPageLabel>
+                <TriggerLabel>Is Sync Master</TriggerLabel>
+            </State>
+            
+            <State id="syncMasterNumberOfSlaves">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Master Number of Slaves</ControlPageLabel>
+                <TriggerLabel>Sync Master Number of Slaves</TriggerLabel>
+            </State>
+            
+            <State id="syncMasterSlave_1_Id">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 1 ID</ControlPageLabel>
+                <TriggerLabel>Sync Slave 1 ID</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_1_Address">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 1 Address</ControlPageLabel>
+                <TriggerLabel>Sync Slave 1 Address</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_1_Name">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Master 1 Slave Name</ControlPageLabel>
+                <TriggerLabel>Sync Master Slave 1 Name</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_2_Id">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 2 ID</ControlPageLabel>
+                <TriggerLabel>Sync Slave 2 ID</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_2_Address">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 2 Address</ControlPageLabel>
+                <TriggerLabel>Sync Slave 2 Address</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_2_Name">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Master 2 Slave Name</ControlPageLabel>
+                <TriggerLabel>Sync Master Slave 2 Name</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_3_Id">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 3 ID</ControlPageLabel>
+                <TriggerLabel>Sync Slave 3 ID</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_3_Address">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 3 Address</ControlPageLabel>
+                <TriggerLabel>Sync Slave 3 Address</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_3_Name">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Master 3 Slave Name</ControlPageLabel>
+                <TriggerLabel>Sync Master Slave 3 Name</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_4_Id">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 4 ID</ControlPageLabel>
+                <TriggerLabel>Sync Slave 4 ID</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_4_Address">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Slave 4 Address</ControlPageLabel>
+                <TriggerLabel>Sync Slave 4 Address</TriggerLabel>
+            </State>
+
+            <State id="syncMasterSlave_4_Name">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Sync Master 4 Slave Name</ControlPageLabel>
+                <TriggerLabel>Sync Master Slave 4 Name</TriggerLabel>
+            </State>
+
+            <State id="isSyncSlave">
+                <ValueType>Boolean</ValueType>
+                <ControlPageLabel>Is Sync Slave</ControlPageLabel>
+                <TriggerLabel>Sync Is Slave</TriggerLabel>
+            </State>
+            
+            <State id="masterPlayerId">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Master Player ID</ControlPageLabel>
+                <TriggerLabel>Master Player ID</TriggerLabel>
+            </State>
+            
+            <State id="masterPlayerAddress">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Master Player Address</ControlPageLabel>
+                <TriggerLabel>Master Player Address</TriggerLabel>
+            </State>
+            
+            <State id="masterPlayername">
+                <ValueType>String</ValueType>
+                <ControlPageLabel>Master Player Name</ControlPageLabel>
+                <TriggerLabel>Master Player Name</TriggerLabel>
+            </State>
+            
+		</States>
+		<UiDisplayStateId>state</UiDisplayStateId>
+	</Device>
+</Devices>

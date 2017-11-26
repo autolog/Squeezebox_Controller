@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+
+<Actions>
+	
+	<Action id="refreshServerStatus" deviceFilter="self.squeezeboxServer">
+		<Name>Refresh Server Status</Name>
+		<CallbackMethod>processRefreshServerStatus</CallbackMethod>
+	</Action>
+	<Action id="powerOnAll" deviceFilter="self.squeezeboxServer">
+		<Name>Power On All</Name>
+		<CallbackMethod>processPowerOnAll</CallbackMethod>
+	</Action>
+	<Action id="powerOffAll" deviceFilter="self.squeezeboxServer">
+		<Name>Power Off All</Name>
+		<CallbackMethod>processPowerOffAll</CallbackMethod>
+	</Action>
+	<Action id="powerOn" deviceFilter="self.squeezeboxPlayer">
+		<Name>Power On</Name>
+		<CallbackMethod>processPowerOn</CallbackMethod>
+	</Action>
+	<Action id="powerOff" deviceFilter="self.squeezeboxPlayer">
+		<Name>Power Off</Name>
+		<CallbackMethod>processPowerOff</CallbackMethod>
+	</Action>
+	<Action id="powerToggleOnOff" deviceFilter="self.squeezeboxPlayer">
+		<Name>Power Toggle On/Off</Name>
+		<CallbackMethod>processPowerToggleOnOff</CallbackMethod>
+	</Action>
+	<Action id="play" deviceFilter="self.squeezeboxPlayer">
+		<Name>Play</Name>
+		<CallbackMethod>processPlay</CallbackMethod>
+	</Action>
+	<Action id="stop" deviceFilter="self.squeezeboxPlayer">
+		<Name>Stop</Name>
+		<CallbackMethod>processStop</CallbackMethod>
+	</Action>
+	<Action id="pause" deviceFilter="self.squeezeboxPlayer">
+		<Name>Pause</Name>
+		<CallbackMethod>processPause</CallbackMethod>
+	</Action>
+	<Action id="forward" deviceFilter="self.squeezeboxPlayer">
+		<Name>Forward Now Playing</Name>
+		<CallbackMethod>processForward</CallbackMethod>
+	</Action>
+	<Action id="rewind" deviceFilter="self.squeezeboxPlayer">
+		<Name>Rewind Now Playing</Name>
+		<CallbackMethod>processRewind</CallbackMethod>
+	</Action>
+
+	<Action id="volumeSet" deviceFilter="self.squeezeboxPlayer">
+		<Name>Volume Set</Name>
+		<CallbackMethod>processVolumeSet</CallbackMethod>
+		<ConfigUI>
+			<Field id="volumeSetValue" type="textfield" defaultValue="5">
+				<Label>Set Volume To:</Label>
+			</Field>
+		</ConfigUI>
+	</Action>
+
+	<Action id="volumeIncrease" deviceFilter="self.squeezeboxPlayer">
+		<Name>Volume Increase</Name>
+		<CallbackMethod>processVolumeIncrease</CallbackMethod>
+		<ConfigUI>
+			<Field id="volumeIncreaseValue" type="textfield" defaultValue="5">
+				<Label>Increase Volume By:</Label>
+			</Field>
+			<Field id="forceVolumeToMultipleOfIncrease" type="checkbox"  default="false">
+				<Label>Force volume to multiple of increase:</Label>
+			</Field>
+		</ConfigUI>
+	</Action>
+
+	<Action id="volumeDecrease" deviceFilter="self.squeezeboxPlayer">
+		<Name>Volume Decrease</Name>
+		<CallbackMethod>processVolumeDecrease</CallbackMethod>
+		<ConfigUI>
+			<Field id="volumeDecreaseValue" type="textfield" defaultValue="5">
+				<Label>Decrease Volume By:</Label>
+			</Field>
+			<Field id="forceVolumeToMultipleOfDecrease" type="checkbox"  default="false">
+				<Label>Force volume to multiple of decrease:</Label>
+			</Field>
+		</ConfigUI>
+	</Action>
+
+	<Action id="volumeMute" deviceFilter="self.squeezeboxPlayer">
+		<Name>Volume Mute</Name>
+		<CallbackMethod>processVolumeMute</CallbackMethod>
+		<ConfigUI>
+			<Field id="volumeMuteAll" type="checkbox"  readonly="YES" defaultValue="false">
+				<Label>Mute All:</Label>
+				<Description>Apply to all players in Sync Group.</Description>
+			</Field>
+		</ConfigUI>
+	</Action>
+
+	<Action id="volumeUnmute" deviceFilter="self.squeezeboxPlayer">
+		<Name>Volume Unmute</Name>
+		<CallbackMethod>processVolumeUnmute</CallbackMethod>
+		<ConfigUI>
+			<Field id="volumeUnmuteAll" type="checkbox" readonly="YES" defaultValue="false">
+				<Label>Unmute All:</Label>
+				<Description>Apply to all players in Sync Group.</Description>
+			</Field>
+		</ConfigUI>
+	</Action>
+
+	<Action id="volumeToggleMute" deviceFilter="self.squeezeboxPlayer">
+		<Name>Volume Toggle Mute</Name>
+		<CallbackMethod>processVolumeToggleMute</CallbackMethod>
+		<ConfigUI>
+			<Field id="volumeToggleMuteAll" type="checkbox" readonly="YES" defaultValue="false">
+				<Label>Toggle Mute All:</Label>
+				<Description>Apply to all players in Sync Group.</Description>
+			</Field>
+		</ConfigUI>
+	</Action>
+
+	<Action id="playPreset" deviceFilter="self.squeezeboxPlayer">
+		<Name>Play Preset</Name>
+		<CallbackMethod>processPlayPreset</CallbackMethod>
+		<ConfigUI>
+			<Field id="preset" type="menu" defaultValue="1">
+				<Label>Select Preset:</Label>
+				<List>
+					<Option value="1">Preset 1</Option>
+					<Option value="2">Preset 2</Option>
+					<Option value="3">Preset 3</Option>
+					<Option value="4">Preset 4</Option>
+					<Option value="5">Preset 5</Option>
+					<Option value="6">Preset 6</Option>
+				</List>
+			</Field>
+		</ConfigUI>
+	</Action>
+	<Action id="playFavorite" deviceFilter="self.squeezeboxPlayer">
+		<Name>Play Favorite</Name>
+		<CallbackMethod>processPlayFavorite</CallbackMethod>
+		<ConfigUI>
+			<Field id="favorite" type="textfield" defaultValue="1">
+				<Label>Favorite id:</Label>
+			</Field>
+		</ConfigUI>
+	</Action>
+	<Action id="playPlaylist" deviceFilter="self.squeezeboxPlayer">
+		<Name>Play Playlist</Name>
+		<CallbackMethod>processPlayPlaylist</CallbackMethod>
+		<ConfigUI>
+			<Field id="playlist" type="textfield" defaultValue="Specify full path and filename here.">
+				<Label>Playlist to Play:</Label>
+			</Field>
+		</ConfigUI>
+	</Action>
+	<Action id="clearPlaylist" deviceFilter="self.squeezeboxPlayer">
+		<Name>Clear Playlist</Name>
+		<CallbackMethod>processClearPlaylist</CallbackMethod>
+	</Action>
+	<Action id="shuffle" deviceFilter="self.squeezeboxPlayer">
+		<Name>Shuffle Playlist</Name>
+		<CallbackMethod>processShuffle</CallbackMethod>
+		<ConfigUI>
+			<Field id="optionShuffle" type="menu" defaultValue="0">
+				<Label>Shuffle Option:</Label>
+				<List>
+					<Option value="off">Off</Option>
+					<Option value="song">By Song</Option>
+					<Option value="album">By Album</Option>
+					<Option value="toggle">Toggle</Option>
+				</List>
+			</Field>
+		</ConfigUI>
+	</Action>
+	<Action id="repeat" deviceFilter="self.squeezeboxPlayer">
+		<Name>Repeat Now Playing</Name>
+		<CallbackMethod>processRepeat</CallbackMethod>
+		<ConfigUI>
+			<Field id="optionRepeat" type="menu" defaultValue="0">
+				<Label>Repeat Option:</Label>
+				<List>
+					<Option value="off">Off</Option>
+					<Option value="song">Song</Option>
+					<Option value="playlist">Playlist</Option>
+					<Option value="toggle">Toggle</Option>
+				</List>
+			</Field>
+		</ConfigUI>
+	</Action>
+
+	<Action id="announcement" deviceFilter="self.squeezeboxPlayer">
+		<Name>Play Announcement</Name>
+		<CallbackMethod>processPlayAnnouncement</CallbackMethod>
+		<ConfigUI>
+			<Field id="optionAnnouncement" type="menu" defaultValue="file">
+				<Label>Option:</Label>
+				<List>
+					<Option value="file">File</Option>
+					<Option value="speech">Speech</Option>
+				</List>
+			</Field>
+			<Field id="announcementVolume" type="textfield" defaultValue="50">
+				<Label>Volume:</Label>
+			</Field>
+
+			<Field id="announcementFile" type="textfield" visibleBindingId="optionAnnouncement" visibleBindingValue="file" defaultValue="">
+				<Label>Announcement:</Label>
+			</Field>
+			<Field id="announcementFileHelp" type="label" visibleBindingId="optionAnnouncement" visibleBindingValue="file" readonly="true" fontSize="small" fontColor="blue">
+				<Label>Specify full path and filename of announcement file to be played.</Label>
+			</Field>
+
+			<Field id="announcementVoice" type="menu"  visibleBindingId="optionAnnouncement" visibleBindingValue="speech" defaultValue="Alex">
+				<Label>Voice:</Label>
+				<List class="self" filter="" method="processSpeechVoiceGenerator"/>
+			</Field>
+			<Field id="announcementText" type="textfield" visibleBindingId="optionAnnouncement" visibleBindingValue="speech"  defaultValue="">
+				<Label>Text to Speak:</Label>
+			</Field>
+
+			<Field id="announcementTextHelp" type="label" visibleBindingId="optionAnnouncement" visibleBindingValue="speech" readonly="true" fontSize="small" fontColor="blue">
+				<Label>Specify text to be speak e.g. 'The temperature outside is; %%d:12345678:temperature%% degrees centigrade.</Label>
+			</Field>
+
+			<Field id="announcementPrepend" type="checkbox" visibleBindingId="optionAnnouncement" visibleBindingValue="speech" defaultValue="false">
+				<Label>Prepend?:</Label>Label>
+				<Description>Check to play file before speech.</Description>
+			</Field>
+			<Field id="announcementPrependFile" type="textfield" visibleBindingId="announcementPrepend" visibleBindingValue="true" defaultValue="">
+				<Label>Play Before:</Label>
+			</Field>
+			<Field id="announcementPrependFileHelp" type="label" visibleBindingId="announcementPrepend" visibleBindingValue="true" readonly="true" fontSize="small" fontColor="blue">
+				<Label>Specify full path and filename of file to be played before the speech is played.</Label>
+			</Field>
+
+			<Field id="announcementAppend" type="checkbox" visibleBindingId="optionAnnouncement" visibleBindingValue="speech" defaultValue="false">
+				<Label>Append?:</Label>Label>
+				<Description>Check to play file after speech.</Description>
+			</Field>
+			<Field id="announcementAppendFile" type="textfield" visibleBindingId="announcementAppend" visibleBindingValue="true" defaultValue="">
+				<Label>Play After:</Label>
+			</Field>
+			<Field id="announcementAppendFileHelp" type="label" visibleBindingId="announcementAppend" visibleBindingValue="true" readonly="true" fontSize="small" fontColor="blue">
+				<Label>Specify full path and filename of file to be played after the speech is played.</Label>
+			</Field>
+
+		</ConfigUI>
+	</Action>
+
+	<Action id="serverRawCommand" deviceFilter="self.squeezeboxServer">
+		<Name>Server Raw Command</Name>
+		<CallbackMethod>processServerRawCommand</CallbackMethod>
+		<ConfigUI>
+			<Field id="rawServerCommand" type="textfield" defaultValue="">
+				<Label>Raw Command to Send to Server:</Label>
+			</Field>
+		</ConfigUI>
+	</Action>
+	<Action id="playerRawCommand" deviceFilter="self.squeezeboxPlayer">
+		<Name>Player Raw Command</Name>
+		<CallbackMethod>processPlayerRawCommand</CallbackMethod>
+		<ConfigUI>
+			<Field id="rawPlayerCommand" type="textfield" defaultValue="">
+				<Label>Raw Command to Send to Player:</Label>
+			</Field>
+		</ConfigUI>
+	</Action>
+	<Action id="resetAnnouncement" deviceFilter="self.squeezeboxServer">
+		<Name>Reset Announcement</Name>
+		<CallbackMethod>processResetAnnouncement</CallbackMethod>
+	</Action>
+
+
+</Actions>
