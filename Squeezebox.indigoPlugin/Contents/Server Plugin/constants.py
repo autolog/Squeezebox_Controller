@@ -36,7 +36,7 @@ except ImportError:
     pass
 
 
-CF_BUNDLE_IDENTIFIER = "com.autolog.indigoplugin.squeezeboxcontroller"
+CF_BUNDLE_IDENTIFIER = "com.indigodomo.indigoplugin.autologsqueezeboxcontroller"
 ANNOUNCEMENTS_SUB_FOLDER = "autolog_squeezebox_announcements"
 COVER_ART_SUB_FOLDER = "autolog_squeezebox_cover_art"
 
