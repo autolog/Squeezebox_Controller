@@ -5,24 +5,46 @@
         <Label>This Plugin controls Squeezeboxes. 😄</Label>
     </Field>
     <Field id="copyright" type="label">
-        <Label>Copyright © 2014-2016 Autolog</Label>
+        <Label>Copyright © 2014-2023 Autolog</Label>
     </Field>
     <Field id="separator-1" type="separator" visibleBindingValue="true"/> 
 
-    <Field id="coverArtFolder" type="textfield" defaultValue="/Library/Application Support">
+    <Field id="coverArtFolder" type="textfield" defaultValue="">
         <Label>Cover Art folder:</Label>
     </Field>
-    <Field id="coverArtFolderHelp" type="label" readonly="true" fontSize="small" fontColor="blue">
-        <Label>Specify full path to a folder that will be used by the plugin to store cover art images (defaults to '/Library/Application Support' which will result in a folder '/Library/Application Support/autolog/squeezebox/12345678' being created where 12345678 is the Squeezebox player device ID (one folder for each player).</Label>
+    <Field id="coverArtFolderResolved" type="textfield" defaultValue="" hidden="false" readonly="true">
+        <Label>Resolved As ... :</Label>
     </Field>
+
+    <Field id="coverArtFolderHelp" type="label" readonly="true" fontSize="small" fontColor="blue">
+        <Label>Leave blank for default or specify full path to a folder that will be used by the plugin to store cover art images
+            (defaults to '/Library/Application Support/Perceptive Automation/&lt;Indigo version e.g. Indigo 2022.2&gt;/
+            Preferences/Plugins/com.autolog.indigoplugin.squeezeboxcontroller').
+            This folder will contain a folder named "autolog_squeezebox_cover_art",
+            which will itself contain a folder for each Squeezebox player device.
+            The Squeezebox player device folder name will be the Indigo device id.</Label>
+    </Field>
+
+
     <Field id="separator-2" type="separator" visibleBindingValue="true"/> 
 
-    <Field id="announcementTempFolder" type="textfield" defaultValue="/Library/Application Support">
+    <Field id="announcementTempFolder" type="textfield" defaultValue="">
         <Label>Announcement Temporary Work folder:</Label>
     </Field>
-    <Field id="announcementTempFolderHelp" type="label" readonly="true" fontSize="small" fontColor="blue">
-        <Label>Specify full path to a folder that can be used by the plugin to create an 'autolog' folder for temporary announcement work files (defaults to '/Library/Application Support' which will result in a folder '/Library/Application Support/autolog/squeezebox/12345678' being created where 12345678 is the Squeezebox player device ID (one folder for each player).</Label>
+    <Field id="announcementTempFolderResolved" type="textfield" defaultValue="" hidden="false" readonly="true">
+        <Label>Resolved As ... :</Label>
     </Field>
+
+    <Field id="announcementTempFolderHelp" type="label" readonly="true" fontSize="small" fontColor="blue">
+        <Label>Leave blank for default or specify full path to a folder that can be used by the plugin to store temporary announcement work files
+            (defaults to (defaults to '/Library/Application Support/Perceptive Automation/&lt;Indigo version e.g. Indigo 2022.2&gt;/
+            Preferences/Plugins/com.autolog.indigoplugin.squeezeboxcontroller').
+            This folder will contain a folder named "autolog_squeezebox_announcements",
+            which will itself contain a folder for each Squeezebox player device.
+            The Squeezebox player device folder name will be the Indigo device id.</Label>
+    </Field>
+
+
     <Field id="separator-3" type="separator" /> 
 
     <Field type="checkbox" id="debugShow" default="false">

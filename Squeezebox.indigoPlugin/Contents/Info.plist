@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>PluginVersion</key>
-	<string>2.2.0</string>
+	<string>2023.0.1</string>
 	<key>ServerApiVersion</key>
-	<string>1.4</string>
+	<string>3.1</string>
 	<key>IwsApiVersion</key>
 	<string>1.0.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Autolog Squeezebox</string>
+	<string>Squeezebox</string>
 	<key>CFBundleName</key>
-	<string>AutologSqueezebox</string>
+	<string>Squeezebox</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.indigodomo.indigoplugin.autologsqueezeboxcontroller</string>
 	<key>CFBundleVersion</key>
