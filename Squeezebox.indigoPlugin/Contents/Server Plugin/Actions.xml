@@ -204,7 +204,7 @@
 			<Field id="announcementFile" type="textfield" visibleBindingId="optionAnnouncement" visibleBindingValue="file" defaultValue="">
 				<Label>Announcement:</Label>
 			</Field>
-			<Field id="announcementFileHelp" type="label" visibleBindingId="optionAnnouncement" visibleBindingValue="file" readonly="true" fontSize="small" fontColor="blue">
+			<Field id="announcementFileHelp" type="label" visibleBindingId="optionAnnouncement" visibleBindingValue="file" readonly="true" fontSize="small" fontColor="green">
 				<Label>Specify full path and filename of announcement file to be played.</Label>
 			</Field>
 
@@ -216,7 +216,7 @@
 				<Label>Text to Speak:</Label>
 			</Field>
 
-			<Field id="announcementTextHelp" type="label" visibleBindingId="optionAnnouncement" visibleBindingValue="speech" readonly="true" fontSize="small" fontColor="blue">
+			<Field id="announcementTextHelp" type="label" visibleBindingId="optionAnnouncement" visibleBindingValue="speech" readonly="true" fontSize="small" fontColor="green">
 				<Label>Specify text to be speak e.g. 'The temperature outside is; %%d:12345678:temperature%% degrees centigrade.</Label>
 			</Field>
 
@@ -227,7 +227,7 @@
 			<Field id="announcementPrependFile" type="textfield" visibleBindingId="announcementPrepend" visibleBindingValue="true" defaultValue="">
 				<Label>Play Before:</Label>
 			</Field>
-			<Field id="announcementPrependFileHelp" type="label" visibleBindingId="announcementPrepend" visibleBindingValue="true" readonly="true" fontSize="small" fontColor="blue">
+			<Field id="announcementPrependFileHelp" type="label" visibleBindingId="announcementPrepend" visibleBindingValue="true" readonly="true" fontSize="small" fontColor="green">
 				<Label>Specify full path and filename of file to be played before the speech is played.</Label>
 			</Field>
 
@@ -238,7 +238,7 @@
 			<Field id="announcementAppendFile" type="textfield" visibleBindingId="announcementAppend" visibleBindingValue="true" defaultValue="">
 				<Label>Play After:</Label>
 			</Field>
-			<Field id="announcementAppendFileHelp" type="label" visibleBindingId="announcementAppend" visibleBindingValue="true" readonly="true" fontSize="small" fontColor="blue">
+			<Field id="announcementAppendFileHelp" type="label" visibleBindingId="announcementAppend" visibleBindingValue="true" readonly="true" fontSize="small" fontColor="green">
 				<Label>Specify full path and filename of file to be played after the speech is played.</Label>
 			</Field>
 

@@ -63,11 +63,9 @@ class Plugin(indigo.PluginBase):
 
         self.logger = logging.getLogger("Plugin.Squeezebox")
 
-        # self.globals[BASE_FOLDER] = "/Library/Application Support"  # Base Folder for Plugin data  # TODO: Change to Preferences Folder
         self.globals[PLUGIN_PREFS_FOLDER] = f"{self.globals[PLUGIN_INFO][PATH]}/Preferences/Plugins/{self.globals[PLUGIN_INFO][PLUGIN_ID]}"
         if not os.path.exists(self.globals[PLUGIN_PREFS_FOLDER]):
             self.mkdir_with_mode(self.globals[PLUGIN_PREFS_FOLDER])
-
 
         self.globals[COVER_ART] = dict()
         self.globals[COVER_ART][COVER_ART_NO_FILE] = ""
@@ -2061,13 +2059,16 @@ class Plugin(indigo.PluginBase):
                 announcementFile = self.globals[ANNOUNCEMENT][announcementUniqueKey][FILE]
             else:
                 try:
-                    nssp = NSSpeechSynthesizer
-                    announcementFile = str(f"{self.globals[ANNOUNCEMENT][TEMPORARY_FOLDER]}/{ANNOUNCEMENTS_SUB_FOLDER}/{str(indigo.devices[self.masterPlayerId].id)}/autologSpeech.aif")
-                    indigo.server.log(f"announcementFile = {announcementFile}")
-                    # announcementFile = "autologSpeech.aiff"
-                    url = NSURL.fileURLWithPath_(announcementFile)  # TODO: SORT THIS OUT!
-                    indigo.server.log(f"NSURL.fileURLWithPath_ = {url}")
+                    # Check if device folder exists and if not create it
+                    temporary_announcement_folder_for_device = str(f"{self.globals[ANNOUNCEMENT][TEMPORARY_FOLDER]}/{ANNOUNCEMENTS_SUB_FOLDER}/{str(indigo.devices[self.masterPlayerId].id)}")
+                    if not os.path.exists(temporary_announcement_folder_for_device):
+                        os.makedirs(temporary_announcement_folder_for_device)
+                    announcementFile = str(f"{temporary_announcement_folder_for_device}/autologSpeech.aif")  # announcementFile = "autologSpeech.aiff"
+                    # indigo.server.log(f"announcementFile = {announcementFile}")
+                    url = NSURL.fileURLWithPath_(announcementFile)
+                    # indigo.server.log(f"NSURL.fileURLWithPath_ = {url}")
                     # url = NSURL.fileURLWithPath_isDirectory_("~/Documents", announcementFile)
+                    nssp = NSSpeechSynthesizer
                     ve = nssp.alloc().init()
                     voice = self.globals[ANNOUNCEMENT][announcementUniqueKey][VOICE]  # e.g.
                     rate = 100
@@ -2079,6 +2080,7 @@ class Plugin(indigo.PluginBase):
                     time.sleep(1)
 
                 except Exception as exception_error:
+                    debug_point = 1
                     self.exception_handler(exception_error, True)  # Log error and display failing statement
                     return
 
@@ -2465,7 +2467,7 @@ class Plugin(indigo.PluginBase):
                 else:
                     coverArtFile = ""  # TODO: Set coverArtFile when not available; is empty correct?
                     coverArtUrl = "Not available"
-                self.deviceStateUpdate(False, dev, COVER_ART_FILE, "coverArtFile", coverArtFile)  # Cover Art Url
+                self.deviceStateUpdate(False, dev, COVER_ART_FILE, "coverArtFile", coverArtFile)  # Cover Art File
                 self.deviceStateUpdate(True, dev, COVER_ART_URL, "coverArtUrl", coverArtUrl)  # Cover Art Url
 
             else:
