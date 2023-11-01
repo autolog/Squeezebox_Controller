@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Squeezebox Controller © Autolog 2022
+# Squeezebox Controller © Autolog 2023
 #
 
 # r = requests.get(url, json=data)
@@ -93,7 +93,7 @@ class ThreadCommunicateWithServer(threading.Thread):
                             # self.sendMessage = f"{self.sendMessage.rstrip()} MSG:{self.message_id}"
                             # self.message_id += 1
 
-                            # self.communicateLogger.error(f"Message sent to Server: {self.sendMessage}  # TODO: DEBUG
+                            # self.communicateLogger.error(f"Message sent to Server: {self.sendMessage}")  # TODO: DEBUG
                             send_message_bytes = bytes(self.sendMessage + "\n", "utf-8")
                             self.squeezeboxReadWriteSocket.sendall(send_message_bytes)
                             response_bytes = self.squeezeboxReadWriteSocket.recv(1024)

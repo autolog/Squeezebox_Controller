@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Smappee Controller © Autolog 2018-2022
+# Smappee Controller © Autolog 2018-2023
 #
 
 import logging
@@ -15,16 +15,20 @@ except ImportError:
 number = -1
 
 debug_show_constants = False
+debug_use_labels = False
 
 
 def constant_id(constant_label) -> int:  # Auto increment constant id
     global number
     if debug_show_constants and number == -1:
-        indigo.server.log("Smappee Controller Plugin internal Constant Name mapping ...", level=logging.DEBUG)
+        indigo.server.log("Squeezebox Controller Plugin internal Constant Name mapping ...", level=logging.DEBUG)
     number += 1
     if debug_show_constants:
         indigo.server.log(f"{number}: {constant_label}", level=logging.DEBUG)
-    return number
+    if debug_use_labels:
+        return constant_label
+    else:
+        return number
 
 # plugin Constants
 
@@ -36,7 +40,7 @@ except ImportError:
     pass
 
 
-CF_BUNDLE_IDENTIFIER = "com.indigodomo.indigoplugin.autologsqueezeboxcontroller"
+CF_BUNDLE_IDENTIFIER = "com.indigodomoX.indigoplugin.autologsqueezeboxcontroller"
 ANNOUNCEMENTS_SUB_FOLDER = "autolog_squeezebox_announcements"
 COVER_ART_SUB_FOLDER = "autolog_squeezebox_cover_art"
 

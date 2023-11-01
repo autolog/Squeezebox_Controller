@@ -56,8 +56,6 @@ class ThreadListenToServer(threading.Thread):
         try:
             # keepThreadActive = True
             # while keepThreadActive:
-            cc = 1
-            dd = cc +1
             # self.listenLogger.error(f"listen Thread starting socket listen for {self.host}:{self.port} [{self.name}]")  # TODO: DEBUG
 
             self.squeezeboxListenSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # create a TCP socket

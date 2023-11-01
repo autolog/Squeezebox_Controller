@@ -737,7 +737,7 @@ class Plugin(indigo.PluginBase):
 
             self.responseFromSqueezeboxServer = urllib.parse.unquote(responseFromSqueezeboxServer)
 
-            self.logger.debug(f"[{processSqueezeboxFunction}] {self.responseFromSqueezeboxServer.rstrip()}")
+            # self.logger.info(f"handleSqueezeboxServerResponse: [{processSqueezeboxFunction}] {self.responseFromSqueezeboxServer.rstrip()}")  # TODO: DEBUG
 
             self.serverResponse = self.responseFromSqueezeboxServer.split()
 
@@ -746,7 +746,7 @@ class Plugin(indigo.PluginBase):
                 self.serverResponseKeyword2 = self.serverResponse[1]
             except:
                 self.serverResponseKeyword2 = ""
-            self.logger.debug(f"HANDLE SERVER RESPONSE: KW1 = [{self.serverResponseKeyword}], KW2 = [{self.serverResponseKeyword2}]")
+            # self.logger.info(f"HANDLE SERVER RESPONSE: KW1 = [{self.serverResponseKeyword}], KW2 = [{self.serverResponseKeyword2}]")  # TODO: DEBUG
 
             #
             # Process response from server by analysing response and calling relevant handler
@@ -920,14 +920,15 @@ class Plugin(indigo.PluginBase):
                     folder=self.deviceFolderId)
 
                 self.globals[PLAYERS][playerDev.id] = dict()
+                self.globals[PLAYERS][playerDev.id][SERVER_ID] = dev.id
 
                 key_value_list = list()
-                self.deviceUpdateKeyValueList(False, playerDev, NAME, key_value_list, "name", playerInfo[NAME])
-                self.deviceUpdateKeyValueList(False, playerDev, MODEL, key_value_list, "model", playerInfo[MODEL])
-                self.deviceUpdateKeyValueList(False, playerDev, MAC, key_value_list, "mac", playerInfo[PLAYER_ID])
-                self.deviceUpdateKeyValueList(True, playerDev, SERVER_ID, key_value_list, "serverId", dev.id)
-                self.deviceUpdateKeyValueList(True, playerDev, SERVER_NAME, key_value_list, "serverName", dev.name)
-                dev.updateStatesOnServer(key_value_list)
+                self.deviceUpdateKeyValueList(False, playerDev, key_value_list,NAME,  "name", playerInfo[NAME])
+                self.deviceUpdateKeyValueList(False, playerDev, key_value_list, MODEL, "model", playerInfo[MODEL])
+                self.deviceUpdateKeyValueList(False, playerDev, key_value_list, MAC, "mac", playerInfo[PLAYER_ID])
+                self.deviceUpdateKeyValueList(True, playerDev, key_value_list, SERVER_ID, "serverId", dev.id)
+                self.deviceUpdateKeyValueList(True, playerDev, key_value_list, SERVER_NAME, "serverName", dev.name)
+                playerDev.updateStatesOnServer(key_value_list)
 
                 # self.logger.debug(f"Calling deviceStartComm for device: {playerInfo[PLAYER_ID]}")
                 self.deviceStartComm(playerDev)
@@ -1122,7 +1123,7 @@ class Plugin(indigo.PluginBase):
                 self.masterPlayerMAC = self.replyPlayerMAC
                 self.masterPlayerId = self.replyPlayerId
 
-            self._handle_player_detail(devServer,devPlayer)
+            self._handle_player_detail(devServer, devPlayer)
 
         except Exception as exception_error:
             self.exception_handler(exception_error, True)  # Log error and display failing statement
@@ -1688,7 +1689,7 @@ class Plugin(indigo.PluginBase):
                 duration = durationResponse[2].rstrip()
                 try:
                     m, s = divmod(float(duration), 60)
-                    durationUi = str(f"{m:02d}:{s:02d}")
+                    durationUi = str(f"{int(m)}:{int(s)}")
                 except:
                     pass
             except:
@@ -2151,10 +2152,10 @@ class Plugin(indigo.PluginBase):
                 playerIdsToProcess.append(masterPlayerId)
                 for slaveId in self.globals[PLAYERS][masterPlayerId][SLAVE_PLAYER_IDS]:
                     playerIdsToProcess.append(slaveId)
-            elif self.globals[PLAYERS][devId][SLAVE_PLAYER_IDS] != []:
-                playerIdsToProcess.append(devId)
-                for slaveId in self.globals[PLAYERS][devId][SLAVE_PLAYER_IDS]:
-                    playerIdsToProcess.append(slaveId)
+            elif (SLAVE_PLAYER_IDS in self.globals[PLAYERS][devId]) and len(self.globals[PLAYERS][devId][SLAVE_PLAYER_IDS]) > 0:
+                    playerIdsToProcess.append(devId)
+                    for slaveId in self.globals[PLAYERS][devId][SLAVE_PLAYER_IDS]:
+                        playerIdsToProcess.append(slaveId)
             else:
                 playerIdsToProcess.append(devId)
 
@@ -2347,10 +2348,16 @@ class Plugin(indigo.PluginBase):
                     self.globals[PLAYERS][dev.id] = dict()
 
                 self.globals[PLAYERS][devId][NAME] = dev.name
-                self.globals[PLAYERS][dev.id][MODEL] = indigo.devices[dev.id].states["model"]
+                model = indigo.devices[dev.id].states["model"]
+                if model != "":
+                    self.globals[PLAYERS][dev.id][MODEL] = model
                 self.globals[PLAYERS][devId][MAC] = dev.address
-                self.globals[PLAYERS][dev.id][SERVER_ID] = indigo.devices[dev.id].states["serverId"]
-                self.globals[PLAYERS][dev.id][SERVER_NAME] = indigo.devices[dev.id].states["serverName"]
+                server_id = indigo.devices[dev.id].states["serverId"]
+                if server_id != 0:
+                    self.globals[PLAYERS][dev.id][SERVER_ID] = server_id
+                server_name = indigo.devices[dev.id].states["serverName"]
+                if server_name != "":
+                    self.globals[PLAYERS][dev.id][SERVER_NAME] = server_name
 
                 self.logger.debug(f"MAC [{dev.name}] = '{self.globals[PLAYERS][devId][MAC]}'")
 
@@ -2469,6 +2476,7 @@ class Plugin(indigo.PluginBase):
 
     def deviceUpdateKeyValueList(self, update_key_value_list, dev, key_value_list, internal_key, state_key, state_value):
         try:
+            # self.logger.warning(f"deviceUpdateKeyValueList: DevId={dev.id}, InternalKey={internal_key}, StateKey={state_key}, StateValue={state_value}")  # TODO: DEBUG
             self.globals[PLAYERS][dev.id][internal_key] = state_value
             if update_key_value_list:
                 key_value_list.append({"key": state_key, "value": state_value})
