@@ -64,7 +64,7 @@ class Plugin(indigo.PluginBase):
         self.logger = logging.getLogger("Plugin.Squeezebox")
 
         # self.globals[BASE_FOLDER] = "/Library/Application Support"  # Base Folder for Plugin data  # TODO: Change to Preferences Folder
-        self.globals[PLUGIN_PREFS_FOLDER] = f"{self.globals[PLUGIN_INFO][PATH]}/Preferences/Plugins/{CF_BUNDLE_IDENTIFIER}"
+        self.globals[PLUGIN_PREFS_FOLDER] = f"{self.globals[PLUGIN_INFO][PATH]}/Preferences/Plugins/{self.globals[PLUGIN_INFO][PLUGIN_ID]}"
         if not os.path.exists(self.globals[PLUGIN_PREFS_FOLDER]):
             self.mkdir_with_mode(self.globals[PLUGIN_PREFS_FOLDER])
 
@@ -914,7 +914,7 @@ class Plugin(indigo.PluginBase):
                     address=playerInfo[PLAYER_ID],
                     name=playerInfo[NAME], 
                     description=playerInfo[MODEL],
-                    pluginId=f"{CF_BUNDLE_IDENTIFIER}",
+                    pluginId=f"{self.globals[PLUGIN_INFO][PLUGIN_ID]}",
                     deviceTypeId="squeezeboxPlayer",
                     props={"mac":playerInfo[PLAYER_ID]},
                     folder=self.deviceFolderId)
@@ -1016,7 +1016,7 @@ class Plugin(indigo.PluginBase):
                     address=self.playerId,
                     name=playerName, 
                     description=playerDescription, 
-                    pluginId=f"{CF_BUNDLE_IDENTIFIER}",
+                    pluginId=f"{self.globals[PLUGIN_INFO][PLUGIN_ID]}",
                     deviceTypeId="squeezeboxPlayer",
                     props={"mac":playerId},
                     folder=self.deviceFolderId)
